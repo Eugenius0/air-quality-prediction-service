@@ -12,6 +12,7 @@ jobs:
     permissions:
       pages: write
       contents: write
+      workflows: write
 
     steps:
       - name: checkout repo content
