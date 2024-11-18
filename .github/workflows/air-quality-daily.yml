@@ -36,6 +36,9 @@ jobs:
           jupyter nbconvert --to notebook --execute 2_air_quality_feature_pipeline.ipynb
           jupyter nbconvert --to notebook --execute 4_air_quality_batch_inference.ipynb
 
+      - name: Pull latest changes
+        run: git pull origin main
+
       - name: github pages publish
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -43,6 +46,8 @@ jobs:
           commit_options: '--no-verify --signoff'
 
           file_pattern: 'docs/air-quality/assets/img/* docs/_includes/*'
+
+          branch: main
 
           repository: .
 
