@@ -29,6 +29,7 @@ The accuracy of the model’s predictions is monitored using a [**hindcast graph
 
 ### 6. **Model Update with Lagged Feature**
 The model was updated by adding a **lagged air quality feature** (`pm25_lag_rolling_3`), which calculates the **mean PM2.5 values** from the previous 1-3 days. This provides the model with additional historical context for better prediction accuracy.
+We used here a rolling mean which is a statistical method that calculates the average of the previous N data points (3 days in this case). This method captures trends over time, as air quality is often influenced by prior values. We used Pandas' rolling function to efficiently compute the rolling mean, which allows us to easily apply this calculation to time-series data and ensure that each day's PM2.5 value incorporates the context from the previous days.
 
 ---
 
