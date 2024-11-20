@@ -5,6 +5,11 @@ This project involves building and deploying a machine learning model to predict
 
 ---
 
+### Data Used
+The model uses **historical weather data** (more than a year of data) and **historical air quality data** from **AQICN**. The chosen location is Stockholm, Jultomtestigen, Alvsjö stadsdelsomräde, Sweden https://aqicn.org/station/@78529/. The weather data includes features such as **temperature**, **precipitation**, **wind speed**, and **wind direction**, while the air quality data provides **PM2.5** measurements.
+
+---
+
 ### 1. **Backfill Feature Pipeline**
 A backfill feature pipeline was created that downloads historical weather data (more than a year of data) and loads a CSV file of historical air quality data from [AQICN](https://aqicn.org). This data is then registered as **Feature Groups** in **Hopsworks** for use in the pipeline.
 
@@ -25,10 +30,15 @@ The model was updated by adding a **lagged air quality feature** (`pm25_lag_roll
 
 ---
 
-### Data Used
-The model uses **historical weather data** (more than a year of data) and **historical air quality data** from **AQICN**. The weather data includes features such as **temperature**, **precipitation**, **wind speed**, and **wind direction**, while the air quality data provides **PM2.5** measurements.
+### Results
 
----
+# Without Lag
+MSE       = 7.18
+R Squared = -0.32
+
+# With Lag
+MSE       = 4.65
+R Squared = 0.15
 
 ### Tools and Technologies Used
 - **Hopsworks** for managing **Feature Groups** and **Feature Views**.
