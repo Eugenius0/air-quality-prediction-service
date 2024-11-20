@@ -1,9 +1,9 @@
-# Air Quality Prediction for Stockholm, Jultomtestigen, Alvsjö stadsdelsomräde, Sweden
+# Air Quality Prediction for Stockholm, Jultomtestigen, Alvsjö stadsdelsomräde, Sweden 🇸🇪
 
 ## Project Description
 This project involves building and deploying a machine learning model to predict air quality (PM2.5) based on historical weather data and air quality measurements. The model is updated daily using newly available data and predictions are monitored for accuracy.
 
-The daily predictions can be followed on [this dashboard](docs/air-quality/index.md).
+The daily predictions can be followed on [this dashboard](docs/air-quality/index.md). 
 
 ---
 
