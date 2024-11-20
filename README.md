@@ -32,13 +32,16 @@ The model was updated by adding a **lagged air quality feature** (`pm25_lag_roll
 
 ### Results
 
-# Without Lag
+#### Without Lag
 MSE       = 7.18
 R Squared = -0.32
 
-# With Lag
+#### With Lag
 MSE       = 4.65
 R Squared = 0.15
+
+![Pasted Graphic 10](https://github.com/user-attachments/assets/7e1e6799-d94d-44ff-8a99-7c5dfacd10ec)
+
 
 ### Tools and Technologies Used
 - **Hopsworks** for managing **Feature Groups** and **Feature Views**.
