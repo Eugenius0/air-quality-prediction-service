@@ -1,16 +1,37 @@
-# mlfs-book
-O'Reilly book - Building Machine Learning Systems with a feature store: batch, real-time, and LLMs
+# Air Quality Prediction for Stockholm, Jultomtestigen, Alvsjö stadsdelsomräde, Sweden
 
+## Project Description
+This project involves building and deploying a machine learning model to predict air quality (PM2.5) based on historical weather data and air quality measurements. The model is updated daily using newly available data and predictions are monitored for accuracy.
 
-## ML System Examples
+---
 
+### 1. **Backfill Feature Pipeline**
+A backfill feature pipeline was created that downloads historical weather data (more than a year of data) and loads a CSV file of historical air quality data from [AQICN](https://aqicn.org). This data is then registered as **Feature Groups** in **Hopsworks** for use in the pipeline.
 
-[Dashboards for Example ML Systems](https://featurestorebook.github.io/mlfs-book/)
+### 2. **Daily Feature Pipeline**
+A daily feature pipeline is scheduled using **GitHub Actions**. This pipeline downloads **yesterday’s weather and air quality data** and weather predictions for the next 7-10 days, updating the relevant **Feature Groups** in **Hopsworks**.
 
-## Course Comparison
+### 3. **Training Pipeline**
+A training pipeline was written to select features and create a **Feature View** in **Hopsworks**. The pipeline reads the training data, trains a regression model (using XGBoost), and registers the model with **Hopsworks**.
 
-| Course                         | MLOps | LLLMs             | Feature/Training/Inference | Working AI Systems | Focus |
-|--------------------------------|-------|----------------------------|--------------------|------------------|
-| Building AI Systems (O'Reilly) | Yes   | Fine-Tuning & RAG | Yes                        | High               | Project-based, Software Engineering, Fundamentals    |
-| [Made With ML](https://madewithml.com/)                   | No          | Yes   | No                         | No                 | Software Engineering, Model Training   |
-| [7 Steps MLOps](https://www.pauliusztin.me/courses/the-full-stack-7-steps-mlops-framework)            | Yes   | Separate Course    | Yes                        | Low                | Learning Tools and Project    |
+### 4. **Batch Inference Pipeline**
+The batch inference pipeline downloads the trained model from **Hopsworks** and performs batch inference. The program plots a dashboard showing **predicted air quality** for the next 7-10 days based on the selected sensor data.
+
+### 5. **Monitoring Accuracy (Hindcast Graph)**
+The accuracy of the model’s predictions is monitored using a **hindcast graph**, which compares the **predicted PM2.5 values** to the **actual observed values** (outcomes) of air quality measured over time.
+
+### 6. **Model Update with Lagged Feature**
+The model was updated by adding a **lagged air quality feature** (`pm25_lag_rolling_3`), which calculates the **mean PM2.5 values** from the previous 1-3 days. This provides the model with additional historical context for better prediction accuracy.
+
+---
+
+### Data Used
+The model uses **historical weather data** (more than a year of data) and **historical air quality data** from **AQICN**. The weather data includes features such as **temperature**, **precipitation**, **wind speed**, and **wind direction**, while the air quality data provides **PM2.5** measurements.
+
+---
+
+### Tools and Technologies Used
+- **Hopsworks** for managing **Feature Groups** and **Feature Views**.
+- **XGBoost** for training the regression model.
+- **GitHub Actions** for scheduling and running pipelines.
+- **Matplotlib** for plotting and saving the forecast and hindcast graphs.
