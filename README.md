@@ -3,6 +3,8 @@
 ## Project Description
 This project involves building and deploying a machine learning model to predict air quality (PM2.5) based on historical weather data and air quality measurements. The model is updated daily using newly available data and predictions are monitored for accuracy.
 
+The daily predictions can be followed on [this dashboard](docs/air-quality/index.md).
+
 ---
 
 ### Data Used
@@ -23,7 +25,7 @@ A training pipeline was written to select features and create a **Feature View**
 The batch inference pipeline downloads the trained model from **Hopsworks** and performs batch inference. The program plots a dashboard showing **predicted air quality** for the next 7-10 days based on the selected sensor data.
 
 ### 5. **Monitoring Accuracy (Hindcast Graph)**
-The accuracy of the model’s predictions is monitored using a **hindcast graph**, which compares the **predicted PM2.5 values** to the **actual observed values** (outcomes) of air quality measured over time.
+The accuracy of the model’s predictions is monitored using a [**hindcast graph**](https://github.com/Eugenius0/air-quality-prediction-service/blob/main/docs/air-quality/assets/img/pm25_hindcast_1day.png), which compares the **predicted PM2.5 values** to the **actual observed values** (outcomes) of air quality measured over time.
 
 ### 6. **Model Update with Lagged Feature**
 The model was updated by adding a **lagged air quality feature** (`pm25_lag_rolling_3`), which calculates the **mean PM2.5 values** from the previous 1-3 days. This provides the model with additional historical context for better prediction accuracy.
