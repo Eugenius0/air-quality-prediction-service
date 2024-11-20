@@ -48,7 +48,6 @@ R Squared = 0.15
 
 ### Future Work
 
-- **More robust data cleaning process**: Remove negative PM2.5 values and handle any other data inconsistencies.
 - **Including additional data sources**: Integrate other relevant data (e.g., satellite data, traffic data) to improve model accuracy.
 - **More extensive cross-validation and hyperparameter tuning**: Implement techniques like random search or grid search to optimize model performance.
 - **Real-time predictions**: Explore real-time prediction capabilities by integrating the model with live data feeds for continuous updates.
